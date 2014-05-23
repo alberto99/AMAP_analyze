@@ -53,7 +53,14 @@ def read_file(filen="",l=[2,7,12]):
     coil=[]
     turn=[]
 
+    count = 0
     for line in fn:
+        if count < 999:
+            count += 1
+            continue
+        if count > 10000:
+            break
+        count += 1
         a = line.split()
         if len(l) < 1:
             l = range(0,len(a))
@@ -86,6 +93,7 @@ def read_file(filen="",l=[2,7,12]):
 def main():
 
     data = read_file(sys.argv[1],l=[])
+    print data
     
 
 if __name__ == '__main__':
